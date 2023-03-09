@@ -1,11 +1,10 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Home from '../pages/Home';
 import Navbar from './Navbar';
 
 const Main = () => {
     return (
-        <div>
+        <div className='px-10'>
             <Navbar/>
             <Outlet/>
         </div>
