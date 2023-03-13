@@ -1,9 +1,9 @@
-import { TOGGLE_BRAND, TOGGLE_REARRANGE, TOGGLE_STOCK } from "../actionTypes/actionTypes"
+import { TOGGLE_REARRANGE, TOGGLE_TAG } from "../actionTypes/actionTypes"
 
-export const toggleBrand = (tagsName)=>{
+export const toggleTag = (tag)=>{
     return{
-        type: TOGGLE_BRAND,
-        payload: tagsName,
+        type: TOGGLE_TAG,
+        payload: tag,
     };
 };
 

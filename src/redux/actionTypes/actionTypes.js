@@ -5,6 +5,6 @@ export const ADD_CONTENT="ADD_CONTENT";
 export const REMOVE_CONTENT="REMOVE_CONTENT";
 
 // for filter reducer 
-export const TOGGLE_BRAND="TOGGLE_BRAND";
-export const TOGGLE_STOCK="TOGGLE_STOCK";
+// export const TOGGLE_BRAND="TOGGLE_BRAND";
+export const TOGGLE_TAG="TOGGLE_TAG";
 export const TOGGLE_REARRANGE="TOGGLE_REARRANGE";

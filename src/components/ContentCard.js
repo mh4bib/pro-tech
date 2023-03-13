@@ -4,10 +4,14 @@ import { useDispatch } from "react-redux";
 import { /* addToCart, removeFromCart */ } from "../redux/actions/contentActions";
 import { RiDeleteBin2Line } from "react-icons/ri"
 import { useLocation } from "react-router-dom";
+import { toggleTag } from "../redux/actions/filterActions";
+import { useSelector } from "react-redux";
 
 const ContentCard = ({ content }) => {
   const dispatch = useDispatch();
+  const filters = useSelector((state) => state.filters.filter);
   const { pathname } = useLocation();
+  const activeClass = "text-white  bg-indigo-500 border-white";
 
   return (
     <div
@@ -30,11 +34,11 @@ const ContentCard = ({ content }) => {
           {content.content.slice(0, 100)}
         </p>
       </div>
-        <div className=''>
-          {content.tags.map((tag, index) => {
-            return <button key={index} onClick={()=>console.log(tag)} className='bg-blue-400 flex justify-center items-center rounded-full text-xs mt-2 py-1 px-2 flex-1 text-white text-bold'>{tag}</button>;
-          })}
-        </div>
+      <div className=''>
+        {content.tags.map((tag, index) => {
+          return <button key={index} onMouseDown={() => dispatch(toggleTag(tag))} className={`border px-2 py-1 rounded-full text-xs mr-2 ${filters?.tags?.includes(tag) ? activeClass : null}`}>{tag}</button>;
+        })}
+      </div>
       <div className='flex gap-2 mt-5'>
         {!pathname.includes('cart') &&
           <button onClick={() => dispatch(/* addToCart(content) */)} className='bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold'>

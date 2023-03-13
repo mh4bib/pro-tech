@@ -1,4 +1,4 @@
-import { TOGGLE_BRAND, TOGGLE_REARRANGE } from "../actionTypes/actionTypes";
+import { TOGGLE_REARRANGE, TOGGLE_TAG } from "../actionTypes/actionTypes";
 
 export const initialState = {
     filter: {
@@ -10,7 +10,7 @@ export const initialState = {
 
 export const filterReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TOGGLE_BRAND:
+        case TOGGLE_TAG:
             if (!state.filter.tags.includes(action.payload)) {
                 return {
                     ...state,
@@ -20,26 +20,30 @@ export const filterReducer = (state = initialState, action) => {
                     }
                 };
             }
-            else {
-                return {
-                    ...state,
-                    filter: {
-                        ...state.filter,
-                        tags: state.filter.tags.filter((tags) => tags !== action.payload)
-                    }
-                };
-            }
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    tags: state.filter.tags.filter((tags) => tags !== action.payload)
+                }
+            };
 
         case TOGGLE_REARRANGE:
-            if (action.payload === "first-upload") {
-                return state;
-            }
-            else{
+            if (action.payload === "last-upload") {
                 return {
                     ...state,
                     filter: {
                         ...state.filter,
-                        rearrange: !state.filter.rearrange,
+                        rearrange: true
+                    }
+                }
+            }
+            else  {
+                return {
+                    ...state,
+                    filter: {
+                        ...state.filter,
+                        rearrange: false,
                     }
                 }
             }

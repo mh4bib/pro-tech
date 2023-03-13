@@ -26,17 +26,18 @@ const Home = () => {
     ))
   }
 
-  if (contents.length && rearrange) {
-    content = contents.sort((a, b) => new Date(b.upload) - new Date(a.upload)).map((content, index) => (
+  /* if (contents.length && rearrange) {
+    content = [...contents].sort((a, b) => new Date(b.upload) - new Date(a.upload)).map((content, index) => (
       <ContentCard key={index} content={content} />
     ))
-  }
+  } */
 
-  /* if (contents.length && (stock || tags.length)) {
-    content = contents
-      .filter((content) => {
-        if (stock) {
-          return content.status === true;
+
+ /*  if (contents.length && (rearrange || tags.length)) {
+    content = [...contents]
+      .sort((a, b) => {
+        if (rearrange) {
+          return new Date(b.upload) - new Date(a.upload);
         }
         return content;
       })
@@ -50,6 +51,25 @@ const Home = () => {
         <ContentCard key={index} content={content} />
       ))
   } */
+  if (contents.length && (rearrange || tags.length)) {
+    content = [...contents]
+      .sort((a, b) => {
+        if (rearrange) {
+          return new Date(b.upload) - new Date(a.upload);
+        }
+        return 0; // return 0 to indicate no sorting needed
+      })
+      .filter((content) => {
+        if (tags.length) {
+          return content.tags.some(tag => tags.includes(tag));
+        }
+        return true; // keep all elements if tags array is empty
+      })
+      .map((content, index) => (
+        <ContentCard key={index} content={content} />
+      ))
+  }
+  
 
   return (
     <div className='max-w-7xl gap-14 mx-auto my-10'>
