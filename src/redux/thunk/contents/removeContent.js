@@ -2,7 +2,7 @@ import { removeContent } from "../../actions/contentActions";
 
 const removeContentData = (id) =>{
     return async(dispatch, getState) =>{
-        const res = await fetch(`http://localhost:5000/api/v1/contents/${id}`, {
+        const res = await fetch(`https://pro-tech-server-mahiuddinhabib.vercel.app/api/v1/contents/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",

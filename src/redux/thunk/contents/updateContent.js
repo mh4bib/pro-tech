@@ -2,7 +2,7 @@ import { updateContent } from "../../actions/contentActions";
 
 const updateContentData = (content, id) =>{
     return async(dispatch, getState) =>{
-        const res = await fetch(`http://localhost:5000/api/v1/contents/${id}`, {
+        const res = await fetch(`https://pro-tech-server-mahiuddinhabib.vercel.app/api/v1/contents/${id}`, {
             method: "PATCH",
             body: JSON.stringify(content),
             headers: {
