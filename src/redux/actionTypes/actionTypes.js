@@ -3,6 +3,8 @@
 export const LOAD_CONTENT="LOAD_CONTENT";
 export const ADD_CONTENT="ADD_CONTENT";
 export const REMOVE_CONTENT="REMOVE_CONTENT";
+export const UPDATE_CONTENT="UPDATE_CONTENT";
+export const ADD_TO_HISTORY="ADD_TO_HISTORY";
 
 // for filter reducer 
 // export const TOGGLE_BRAND="TOGGLE_BRAND";

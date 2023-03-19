@@ -4,27 +4,28 @@ import { useDispatch } from "react-redux";
 import addContentData from "../../redux/thunk/contents/addContentData";
 
 const AddContent = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
 
   const submit = (data) => {
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString("default", { month: "short" })} ${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
     const content = {
-      model: data.model,
+      heading: data.heading,
       image: data.image,
-      tags: data.tags,
-      status: data.status === "true" ? true : false,
-      price: data.price,
-      keyFeature: [
-        data.keyFeature1,
-        data.keyFeature2,
-        data.keyFeature3,
-        data.keyFeature4,
-      ],
-      spec: [],
+      content: data.content,
+      upload: formattedDate,
+      tags: [
+        data.tag1,
+        data.tag2,
+        data.tag3,
+      ]
     };
 
     console.log(content);
     dispatch(addContentData(content));
+
+    reset();
   };
 
   return (
@@ -34,10 +35,10 @@ const AddContent = () => {
         onSubmit={handleSubmit(submit)}
       >
         <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='model'>
-            Model
+          <label className='mb-2' htmlFor='heading'>
+            Heading
           </label>
-          <input type='text' id='model' {...register("model")} />
+          <input type='text' id='heading' {...register("heading")} />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
           <label className='mb-2' htmlFor='image'>
@@ -47,92 +48,44 @@ const AddContent = () => {
         </div>
 
         <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-3' htmlFor='tags'>
-            Brand
+          <label className='mb-2' htmlFor='content'>
+            Content
           </label>
-          <select name='tags' id='tags' {...register("tags")}>
-            <option value='amd'>AMD</option>
-            <option value='intel'>Intel</option>
-          </select>
-        </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='price'>
-            Price
-          </label>
-          <input type='text' name='price' id='price' {...register("price")} />
+          <textarea type='text' name='content' id='content' {...register("content")} />
         </div>
 
-        <div className='flex flex-col w-full max-w-xs'>
-          <h1 className='mb-3'>Availability</h1>
-          <div className='flex gap-3'>
-            <div>
-              <input
-                type='radio'
-                id='available'
-                value={true}
-                {...register("status")}
-              />
-              <label className='ml-2 text-lg' htmlFor='available'>
-                Available
-              </label>
-            </div>
-            <div>
-              <input
-                type='radio'
-                id='stockOut'
-                name='status'
-                value={false}
-                {...register("status")}
-              />
-              <label className='ml-2 text-lg' htmlFor='stockOut'>
-                Stock out
-              </label>
-            </div>
-          </div>
-        </div>
         <div className='flex flex-col w-full max-w-xs'></div>
         <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='keyFeature1'>
-            Key Feature 1
+          <label className='mb-2' htmlFor='tag1'>
+            Tag 1
           </label>
           <input
             type='text'
-            name='keyFeature1'
-            id='keyFeature1'
-            {...register("keyFeature1")}
+            name='tag1'
+            id='tag1'
+            {...register("tag1")}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='keyFeature2'>
-            Key Feature 2
+          <label className='mb-2' htmlFor='tag2'>
+            Tag 2
           </label>
           <input
             type='text'
-            name='keyFeature2'
-            id='keyFeature2'
-            {...register("keyFeature2")}
+            name='tag2'
+            id='tag2'
+            {...register("tag2")}
           />
         </div>
         <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='keyFeature3'>
-            Key Feature 3
+          <label className='mb-2' htmlFor='tag3'>
+            Tag 3
           </label>
           <input
             type='text'
-            name='keyFeature3'
-            id='keyFeature3'
-            {...register("keyFeature3")}
-          />
-        </div>
-        <div className='flex flex-col w-full max-w-xs'>
-          <label className='mb-2' htmlFor='keyFeature4'>
-            Key Feature 4
-          </label>
-          <input
-            type='text'
-            name='keyFeature4'
-            id='keyFeature4'
-            {...register("keyFeature4")}
+            name='tag3'
+            id='tag3'
+            {...register("tag3")}
           />
         </div>
 

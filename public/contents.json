@@ -16,11 +16,19 @@
       "image": "http://placehold.it/32x32"
     },
     {
-      "_id": "640f25e0e8677e7697d0c9d9",
+      "_id": "640f25e0e8677e7697d0c9e9",
       "heading": "3. Nostrud nisi qui excepteur nostrud et ex.",
       "content": "Enim anim ea mollit ex aliquip in ut pariatur eu. Quis duis laboris consectetur ullamco non sunt sint Lorem eiusmod dolore fugiat. Ex sunt qui sunt elit tempor aliquip. Ullamco excepteur proident ex proident velit. Laboris aliqua mollit ut consectetur esse aliqua laboris nostrud velit. Mollit sint amet officia culpa dolor cillum culpa mollit consectetur quis incididunt exercitation. Ea Lorem sit nostrud est culpa labore laboris esse cupidatat amet. Eu veniam ipsum sit cillum qui ut laboris laboris ex proident ad aute laboris. Laborum id enim consectetur minim laborum. Laboris eiusmod cupidatat nisi Lorem cupidatat excepteur in.",
       "upload": "Sat Jul 13 2016 04:57:26",
       "tags": ["cyber security", "cloud computing", "AI"],
       "image": "http://placehold.it/32x32"
+    },
+    {
+      "_id": "640f25e0e8677e7697d0ce9",
+      "heading": "Utilization of artificial intelligence in the banking sector: a systematic literature review",
+      "content": "This study provides a holistic and systematic review of the literature on the utilization of artificial intelligence (AI) in the banking sector since 2005. In this study, the authors examined 44 articles through a systematic literature review approach and conducted a thematic and content analysis on them. This review identifies research themes demonstrating the utilization of AI in banking, develops and classifies sub-themes of past research, and uses thematic findings coupled with prior research to propose an AI banking service framework that bridges the gap between academic research and industry knowledge. The findings demonstrate how the literature on AI and banking extends to three key areas of research: Strategy, Process, and Customer. These findings may benefit marketers and decision-makers in the banking sector to formulate strategic decisions regarding the utilization and optimization of value from AI technologies in the banking sector. This study also provides opportunities for future research. Here, we systematically analyze the past and current state of AI and banking literature to understand how it has been utilized within the banking sector historically, propose a service framework, and provide clear future research opportunities. In the past, a limited number of systematic literature reviews have studied AI within the management discipline (e.g., Bavaresco et al., 2020; Borges et al., 2020; Loureiro et al., 2020; Verma et al., 2021). However, the current literature lacks either research scope and depth, and/or industry focus. In response, we seek to differentiate our study from prior reviews by providing a specific focus on the banking sector and a more comprehensive analysis involving multiple modes of analysis.",
+      "upload": "Fri Mar 17 23 04:57:26",
+      "tags": ["banking", "AI"],
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlFNTRIrhqGh8pAJL1VdZM8C0R95cnhmrwBw&usqp=CAU"
     }
   ]

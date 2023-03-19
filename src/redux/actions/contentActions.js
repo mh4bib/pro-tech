@@ -1,4 +1,4 @@
-import { ADD_CONTENT,/*  ADD_TO_CART, */ LOAD_CONTENT, /* REMOVE_FROM_CART, */ REMOVE_CONTENT } from "../actionTypes/actionTypes"
+import { ADD_CONTENT,ADD_TO_HISTORY,/*  ADD_TO_CART, */ LOAD_CONTENT, /* REMOVE_FROM_CART, */ REMOVE_CONTENT, UPDATE_CONTENT } from "../actionTypes/actionTypes"
 
 export const loadContent = (contents) =>{
     return{
@@ -21,13 +21,21 @@ export const removeContent = (id) =>{
     };
 };
 
-/* export const addToCart = (content) =>{
+export const updateContent = (content) =>{
     return{
-        type: ADD_TO_CART,
+        type: UPDATE_CONTENT,
+        payload: content,
+    };
+};
+
+ export const addToHistory = (content) =>{
+    return{
+        type: ADD_TO_HISTORY,
         payload: content
     };
 };
 
+/*
 export const removeFromCart = (content) =>{
     return{
         type: REMOVE_FROM_CART,

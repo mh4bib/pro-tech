@@ -1,15 +1,22 @@
 import React, { useEffect } from "react";
+import { RiEdit2Line } from 'react-icons/ri';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import loadContentData from "../../redux/thunk/contents/fectchContents";
 import removeContentData from "../../redux/thunk/contents/removeContent";
 
 const ContentList = () => {
-  const contents = useSelector(state=>state.contents.content)
+  const contents = useSelector(state => state.contents.content)
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(loadContentData());
-  },[dispatch])
+  }, [dispatch])
+
+  const handleUpdate = (_id) => {
+    navigate(`/dashboard/update-content/${_id}`);
+  }
 
   return (
     <div className='flex flex-col justify-center items-center h-full w-full '>
@@ -22,18 +29,14 @@ const ContentList = () => {
           <table className='table-auto w-full'>
             <thead className='text-xs font-semibold uppercase text-gray-400 bg-gray-50'>
               <tr>
-                <th></th>
                 <th className='p-2'>
-                  <div className='font-semibold text-left'>Content Name</div>
+                  <div className='font-semibold text-left'>Content Id</div>
                 </th>
                 <th className='p-2'>
-                  <div className='font-semibold text-left'>Brand</div>
+                  <div className='font-semibold text-left'>Heading</div>
                 </th>
                 <th className='p-2'>
-                  <div className='font-semibold text-left'>In Stock</div>
-                </th>
-                <th className='p-2'>
-                  <div className='font-semibold text-left'>Price</div>
+                  <div className='font-semibold text-left'>Last Modified</div>
                 </th>
                 <th className='p-2'>
                   <div className='font-semibold text-center'>Action</div>
@@ -42,34 +45,25 @@ const ContentList = () => {
             </thead>
 
             <tbody className='text-sm divide-y divide-gray-100'>
-              {contents.map(({ model, tags, price, status, _id }) => (
+              {contents.map(({ _id, heading, content, upload }) => (
                 <tr key={_id}>
                   <td className='p-2'>
-                    <input type='checkbox' className='w-5 h-5' value='id-1' />
+                    <div className='font-medium text-gray-800'>{_id}</div>
                   </td>
                   <td className='p-2'>
-                    <div className='font-medium text-gray-800'>{model}</div>
-                  </td>
-                  <td className='p-2'>
-                    <div className='text-left capitalize'>{tags}</div>
-                  </td>
-                  <td className='p-2'>
-                    <div className='text-left'>
-                      {status ? (
-                        <p className='text-green-500 font-medium'>Available</p>
-                      ) : (
-                        <p className='text-red-500 font-medium'>Stock out</p>
-                      )}
-                    </div>
+                    <div className='text-left capitalize'>{`${heading.slice(0, 50)}...`}</div>
                   </td>
                   <td className='p-2'>
                     <div className='text-left font-medium text-indigo-500'>
-                      {price}
+                      {upload}
                     </div>
                   </td>
                   <td className='p-2'>
-                    <div className='flex justify-center'>
-                      <button onClick={()=>dispatch(removeContentData(_id))}>
+                    <div className='flex justify-around'>
+                      <button onClick={() => handleUpdate(_id)}>
+                        <RiEdit2Line className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1' />
+                      </button>
+                      <button onClick={() => dispatch(removeContentData(_id))}>
                         <svg
                           className='w-8 h-8 hover:text-blue-600 rounded-full hover:bg-gray-100 p-1'
                           fill='none'

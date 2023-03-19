@@ -26,12 +26,6 @@ const Home = () => {
     ))
   }
 
-  /* if (contents.length && rearrange) {
-    content = [...contents].sort((a, b) => new Date(b.upload) - new Date(a.upload)).map((content, index) => (
-      <ContentCard key={index} content={content} />
-    ))
-  } */
-
 
  /*  if (contents.length && (rearrange || tags.length)) {
     content = [...contents]

@@ -3,11 +3,13 @@ import Main from "../layout/Main";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import About from "../pages/About";
-import TopRated from "../pages/TopRated";
 // import Cart from "../pages/Cart";
 import Dashboard from "../layout/Dashboard/Dashboard";
 import ContentList from "../pages/dashboard/ContentList";
 import AddContent from "../pages/dashboard/AddContent";
+import ReadingHistory from "../pages/ReadingHistory";
+import ReadMore from "../pages/ReadMore";
+import UpdateContent from "../pages/dashboard/UpdateContent";
 
 const routes = createBrowserRouter([
     {
@@ -20,17 +22,17 @@ const routes = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: "/top-rated",
-                element: <TopRated />,
-            },
-            {
                 path: "/about",
                 element: <About />,
             },
-            /* {
-                path: "/cart",
-                element: <Cart />,
-            }, */
+            {
+                path: "/history",
+                element: <ReadingHistory />,
+            },
+            {
+                path: "/read/:_id",
+                element: <ReadMore />,
+            },
             {
                 path: "/dashboard",
                 element: <Dashboard />,
@@ -42,6 +44,10 @@ const routes = createBrowserRouter([
                     {
                         path: "add-content",
                         element: <AddContent />,
+                    },
+                    {
+                        path: "update-content/:_id",
+                        element: <UpdateContent />,
                     },
                 ],
             },

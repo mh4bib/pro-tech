@@ -1,12 +1,14 @@
-import { ADD_CONTENT, /* ADD_TO_CART, */ LOAD_CONTENT, /* REMOVE_FROM_CART, */ REMOVE_CONTENT } from "../actionTypes/actionTypes";
+import { ADD_CONTENT, ADD_TO_HISTORY, /* ADD_TO_CART, */ LOAD_CONTENT, /* REMOVE_FROM_CART, */ REMOVE_CONTENT } from "../actionTypes/actionTypes";
 
 const initialState = {
-    // cart: [],
     content: [],
+    history: [],
 };
 
 const contentReducer = (state = initialState, action) => {
-    // const selectedContent = state.cart.find((content) => content._id === action.payload._id);
+    const currentDate = new Date();
+    const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString("default", { month: "short" })} ${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
+    const selectedContent = state.history.find((content) => content._id === action.payload._id);
 
     switch (action.type) {
         case LOAD_CONTENT:
@@ -17,27 +19,27 @@ const contentReducer = (state = initialState, action) => {
         case ADD_CONTENT:
             return {
                 ...state,
-                content:[...state.content, action.payload],
+                content: [...state.content, action.payload],
             };
         case REMOVE_CONTENT:
             return {
                 ...state,
-                content:state.content.filter(p=>p._id!==action.payload),
+                content: state.content.filter(p => p._id !== action.payload),
             };
-        /* case ADD_TO_CART:
+        case ADD_TO_HISTORY:
             if (selectedContent) {
-                const newCart = state.cart.filter((content) => content._id !== selectedContent._id);
-                selectedContent.quantity += 1;
+                const newHistory = state.history.filter((content) => content._id !== selectedContent._id);
+                selectedContent.lastRead = formattedDate;
                 return {
                     ...state,
-                    cart: [...newCart, selectedContent],
+                    history: [...newHistory, selectedContent],
                 };
             }
             return {
                 ...state,
-                cart: [...state.cart, { ...action.payload, quantity: 1 }],
+                history: [...state.history, { ...action.payload, lastRead: formattedDate }],
             };
-        case REMOVE_FROM_CART:
+        /*case REMOVE_FROM_CART:
             if (selectedContent.quantity > 1) {
                 const newCart = state.cart.filter((content) => content._id !== selectedContent._id);
                 selectedContent.quantity -= 1;
